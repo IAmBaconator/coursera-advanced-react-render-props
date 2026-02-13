@@ -10,6 +10,10 @@ const MousePosition = ({ render }) => {
   useEffect(() => {
     const handleMousePositionChange = (e) => {
       // use e.clientX and e.clientY to access the mouse position on the screen.
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
     };
 
     // subscription to a listener that will capture the user's mouse movement.
@@ -21,8 +25,8 @@ const MousePosition = ({ render }) => {
     };
   }, []);
 
-  // What should be returned here?
-  return null;
+  // Return the x,y coords.
+  return render(mousePosition);
 };
 
 // This component should not receive any props

@@ -29,7 +29,7 @@ const MousePosition = ({ render }) => {
   return render({ mousePosition });
 };
 
-// This component should not receive any props
+// This component renders the mouse coords when it's within the designated panel
 const PanelMouseLogger = () => {
   return (
     <div className='BasicTracker'>
@@ -46,16 +46,16 @@ const PanelMouseLogger = () => {
   );
 };
 
-// This component should not receive any props
+// This component renders the mouse coords 
 const PointMouseLogger = ({mousePosition}) => {
-  // The below if statement can be removed after the rendoer props patter is implemented
-  if (!mousePosition) {
-    return null;
-  }
   return (
-    <p>
-      ({mousePosition.x}, {mousePosition.y})
-    </p>
+    <MousePosition
+      render={({ mousePosition }) => (
+        <p>
+          ({mousePosition.x}, {mousePosition.y})
+        </p>        
+      )}
+    />
   );
 };
 

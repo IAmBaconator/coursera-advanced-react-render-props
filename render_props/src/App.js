@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 const MousePosition = ({ render }) => {
@@ -30,18 +30,18 @@ const MousePosition = ({ render }) => {
 };
 
 // This component should not receive any props
-const PanelMouseLogger = ({mousePosition}) => {
-  // The below if statemen can be removed after the render props patter is implemented
-  if (!mousePosition) {
-    return null;
-  }
+const PanelMouseLogger = () => {
   return (
     <div className='BasicTracker'>
       <p>Mouse position:</p>
-      <div className='Row'>
-        <span>x: {mousePosition.x}</span>
-        <span>y: {mousePosition.y}</span>
-      </div>
+      <MousePosition
+        render={({ mousePosition }) => (
+          <div className='Row'>
+            <span>x: {mousePosition.x}</span>
+            <span>y: {mousePosition.y}</span>
+          </div>
+        )}
+      />
     </div>
   );
 };
